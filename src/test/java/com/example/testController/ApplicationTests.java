@@ -1,7 +1,7 @@
 package com.example.testController;
 
 import com.example.Controller.UserController;
-import com.example.DemoApplication;
+import com.example.Application;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@SpringBootTest(classes = DemoApplication.class)
+@SpringBootTest(classes = Application.class)
 public class ApplicationTests {
     private MockMvc mvc;
 

@@ -1,6 +1,6 @@
 package com.example.testController;
 
-import com.example.DemoApplication;
+import com.example.Application;
 import com.example.entity.RedisUser;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@SpringBootTest(classes = DemoApplication.class)
+@SpringBootTest(classes = Application.class)
 public class TestRedisUser {
 
     @Autowired

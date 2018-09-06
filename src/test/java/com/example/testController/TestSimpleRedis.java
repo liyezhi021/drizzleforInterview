@@ -1,6 +1,6 @@
 package com.example.testController;
 
-import com.example.DemoApplication;
+import com.example.Application;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +10,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = DemoApplication.class)
+@SpringBootTest(classes = Application.class)
 public class TestSimpleRedis {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;

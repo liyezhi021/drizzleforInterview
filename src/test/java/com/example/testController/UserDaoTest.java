@@ -1,6 +1,6 @@
 package com.example.testController;
 
-import com.example.DemoApplication;
+import com.example.Application;
 import com.example.entity.User;
 import com.example.mapper.UserMapper;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 //TestDaoOK
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = DemoApplication.class)
+@SpringBootTest(classes = Application.class)
 public class UserDaoTest {
     @Autowired
     private UserMapper userMapper;
