@@ -4,15 +4,18 @@ import com.example.Application;
 import com.example.entity.UserVo;
 import com.example.redis.RedisKeyUtil;
 import com.example.redis.RedisService;
+import com.example.utils.RedisListOprations;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.*;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -41,6 +44,9 @@ public class TestRedisUser {
     @Autowired
     private ZSetOperations<String, Object> zSetOperations;
 
+    @Autowired
+    private RedisListOprations redisListOprations;
+
     @Resource
     private RedisService redisService;
 
@@ -48,10 +54,11 @@ public class TestRedisUser {
     public void testObj() throws Exception{
         UserVo userVo = new UserVo();
         userVo.setAddress("上海");
-        userVo.setName("测试dfas");
+        userVo.setName("mingLi");
         userVo.setAge(123);
+        valueOperations.set("t_user:name:mingLi:",userVo);
         ValueOperations<String,Object> operations = redisTemplate.opsForValue();
-        redisService.expireKey("name",20, TimeUnit.SECONDS);
+        redisService.expireKey("name",20, TimeUnit.MINUTES);
         String key = RedisKeyUtil.getKey(UserVo.Table,"name",userVo.getName());
         UserVo vo = (UserVo) operations.get(key);
         System.out.println(vo);
@@ -78,8 +85,8 @@ public class TestRedisUser {
         auserVo.setAddress("n柜昂周");
         auserVo.setName("antent");
         auserVo.setAge(23);
-        setOperations.add("user:test",userVo,auserVo);
-        Set<Object> result = setOperations.members("user:test");
+        setOperations.add("set:test",userVo,auserVo);
+        Set<Object> result = setOperations.members("set:test");
         System.out.println(result);
     }
 
@@ -99,10 +106,19 @@ public class TestRedisUser {
         userVo.setAddress("北京");
         userVo.setName("jantent");
         userVo.setAge(23);
-//        listOperations.leftPush("list:user",userVo);
-//        System.out.println(listOperations.leftPop("list:user"));
+        UserVo userVo1 = new UserVo();
+        userVo1.setAddress("广州");
+        userVo1.setName("jan2tent");
+        userVo1.setAge(24);
+        //listOperations.leftPushAll("list:user",userVo, userVo1);
+//      System.out.println(listOperations.leftPop("list:user"));
         // pop之后 值会消失
-        System.out.println(listOperations.leftPop("list:user"));
+        //System.out.println(listOperations.leftPop("list:user"));
+        List<UserVo> list = redisListOprations.lrange("list:user", 0, 10, UserVo.class);
+        System.out.println("size..."+list.size());
+        for(Object o : list){
+            System.out.println(o);
+        }
     }
 
 }
