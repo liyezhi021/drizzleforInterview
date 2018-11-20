@@ -48,11 +48,16 @@ spring:
           max-idle: 8
           min-idle: 0
       timeout: 60s
+    data:
+      elasticsearch:
+        cluster-nodes: 127.0.0.1:9300
 
 
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.example.entity
+
+##es地址
 
 #pagehelper分页插件
 pagehelper:
