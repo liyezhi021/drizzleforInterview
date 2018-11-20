@@ -24,7 +24,7 @@ public class PDF2ImgUtil {
             pages = pdDocument.getNumberOfPages();
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error(e.getMessage(),e);
+            logger.error(e.getMessage(), e);
         } finally {
             if (pdDocument != null) {
                 pdDocument.close();
@@ -36,8 +36,8 @@ public class PDF2ImgUtil {
 
     /**
      * PDF转图片 根据页码一页一页转
-     * @throws IOException
-     * imgType:转换后的图片类型 jpg,png
+     *
+     * @throws IOException imgType:转换后的图片类型 jpg,png
      */
     public static void PDFToImg(OutputStream sos, String fileUrl, int page, String imgType) throws IOException {
         PDDocument pdDocument = null;
@@ -55,7 +55,7 @@ public class PDF2ImgUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error(e.getMessage(),e);
+            logger.error(e.getMessage(), e);
         } finally {
             if (pdDocument != null) {
                 pdDocument.close();

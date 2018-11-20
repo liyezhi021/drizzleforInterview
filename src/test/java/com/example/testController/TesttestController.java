@@ -24,12 +24,12 @@ public class TesttestController {
     private MockMvc mvc;
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         mvc = MockMvcBuilders.standaloneSetup(new TestController()).build();
     }
 
     @Test
-    public void getTestString() throws Exception{
+    public void getTestString() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/test").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("hello its just for test")));

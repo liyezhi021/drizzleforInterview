@@ -17,10 +17,10 @@ public class TestSimpleRedis {
     private StringRedisTemplate stringRedisTemplate;
 
     @Test
-    public void test1() throws Exception{
+    public void test1() throws Exception {
         //save string
-        stringRedisTemplate.opsForValue().set("payne","payneredis");
-        Assert.assertEquals("payneredis",stringRedisTemplate.opsForValue().get("payne"));
+        stringRedisTemplate.opsForValue().set("payne", "payneredis");
+        Assert.assertEquals("payneredis", stringRedisTemplate.opsForValue().get("payne"));
     }
 
 }

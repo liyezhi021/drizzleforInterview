@@ -4,7 +4,7 @@ public class TestCla {
 
     public static String privateUrl;
 
-    static{
+    static {
         privateUrl = "eee";
     }
 }

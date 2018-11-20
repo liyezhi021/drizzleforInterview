@@ -9,18 +9,18 @@ import java.io.OutputStream;
 
 public class TestPDF2Img {
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         String fileUrl = "/home/payne/Documents/BLRZ.pdf";
         String needType = "png";
         int currentPage = 1;
         File f = new File("/home/payne/Documents/test1.png");
-        try{
+        try {
             int pages = PDF2ImgUtil.getPDFNum(fileUrl);
             OutputStream sos = null;
             sos = new FileOutputStream(f);
-            PDF2ImgUtil.PDFToImg(sos,fileUrl,currentPage,needType);
+            PDF2ImgUtil.PDFToImg(sos, fileUrl, currentPage, needType);
             System.out.println("transfer ok!");
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

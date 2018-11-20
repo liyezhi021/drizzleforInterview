@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class TestMeth {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //String str = "http://ht3.dcfservice.com/download/20180820/f409490b-7230-47ef-8a8b-af89e5f115e3.jpg";
         /*String reg2 = "/([com]+)$/";
         Pattern p=Pattern.compile(reg2);

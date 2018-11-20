@@ -9,13 +9,13 @@ public class RocketMQProducerTest {
 
     private static String mqTopics = "MQ_MSG_TOPICS_TEST";
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         String producerMqGroupName = "CONSUMER-MQ-GROUP";
         RocketMQProducer mqProducer = new RocketMQProducer(mqNameServer, producerMqGroupName, mqTopics);
         mqProducer.init();
 
-        for(int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             Message message = new Message();
             message.setBody(("I send message to RocketMQ To Test" + i).getBytes());
             mqProducer.send(message);

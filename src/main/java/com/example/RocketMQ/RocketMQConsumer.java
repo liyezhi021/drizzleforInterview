@@ -14,13 +14,13 @@ public class RocketMQConsumer {
 
     private MessageListener listener;
 
-    protected  String nameServer;
+    protected String nameServer;
 
     protected String groupName;
 
     protected String topics;
 
-    public RocketMQConsumer(MessageListener listener, String nameServer, String groupName, String topics){
+    public RocketMQConsumer(MessageListener listener, String nameServer, String groupName, String topics) {
         this.listener = listener;
         this.nameServer = nameServer;
         this.groupName = groupName;
@@ -28,13 +28,13 @@ public class RocketMQConsumer {
 
     }
 
-    public void init(){
+    public void init() {
         consumer = new DefaultMQPushConsumer(groupName);
         consumer.setNamesrvAddr(nameServer);
 
-        try{
+        try {
             consumer.subscribe(topics, "*");
-        }catch (MQClientException e){
+        } catch (MQClientException e) {
             e.printStackTrace();
         }
 
@@ -42,9 +42,9 @@ public class RocketMQConsumer {
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
         consumer.registerMessageListener((MessageListenerConcurrently) this.listener);
 
-        try{
+        try {
             consumer.start();
-        }catch (MQClientException e){
+        } catch (MQClientException e) {
             e.printStackTrace();
         }
         System.out.println("RocketMQConsumer Started! group=" + consumer.getConsumerGroup() + " instance=" + consumer.getInstanceName());

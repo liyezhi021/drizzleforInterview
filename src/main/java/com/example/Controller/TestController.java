@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @RequestMapping(value = "/test")
-    public String index(ModelMap map){
-        map.addAttribute("host","http://39.105.4.0:8080");
+    public String index(ModelMap map) {
+        map.addAttribute("host", "http://39.105.4.0:8080");
         return "welcome";
     }
 }

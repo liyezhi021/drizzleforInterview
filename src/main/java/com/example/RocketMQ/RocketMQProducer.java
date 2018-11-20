@@ -18,32 +18,32 @@ public class RocketMQProducer {
 
     protected String topics;
 
-    public void init(){
+    public void init() {
         sender = new DefaultMQProducer(groupName);
         sender.setNamesrvAddr(nameServer);
         sender.setInstanceName(UUID.randomUUID().toString());
 
-        try{
+        try {
             sender.start();
-        }catch (MQClientException e){
+        } catch (MQClientException e) {
             e.printStackTrace();
         }
     }
 
-    public RocketMQProducer(String nameServer, String groupName, String topics){
+    public RocketMQProducer(String nameServer, String groupName, String topics) {
         this.nameServer = nameServer;
         this.groupName = groupName;
         this.topics = topics;
     }
 
-    public void send(Message message){
+    public void send(Message message) {
         message.setTopic(topics);
 
-        try{
+        try {
             SendResult result = sender.send(message);
             SendStatus status = result.getSendStatus();
             System.out.println("messageId=" + result.getMsgId() + ", status=" + status);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

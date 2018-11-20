@@ -9,7 +9,7 @@ public class RocketMQConsumerTest {
 
     private static String mqTopics = "MQ_MSG_TOPICS_TEST";
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         String consumerMqGroupName = "CONSUMER-MQ-GROUP";
 
@@ -20,7 +20,7 @@ public class RocketMQConsumerTest {
 
         try {
             Thread.sleep(1000 * 60L);
-        }catch (InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
