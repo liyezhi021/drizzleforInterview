@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 @RestController
-public class PostController {
+public class ElasticSearchPostController {
 
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;

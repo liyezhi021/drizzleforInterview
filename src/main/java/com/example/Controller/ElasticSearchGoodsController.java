@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class GoodsController {
+public class ElasticSearchGoodsController {
 
     @Autowired
     private GoodsRepository goodsRepository;

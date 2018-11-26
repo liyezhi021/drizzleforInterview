@@ -1,6 +1,6 @@
 package com.example.testController;
 
-import com.example.Controller.UserController;
+import com.example.Controller.MvUserController;
 import com.example.Application;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -19,7 +19,7 @@ public class ApplicationTests {
 
     @Before
     public void setUp() throws Exception {
-        mvc = MockMvcBuilders.standaloneSetup(new UserController()).build();
+        mvc = MockMvcBuilders.standaloneSetup(new MvUserController()).build();
     }
 
     public void testUserController() throws Exception {

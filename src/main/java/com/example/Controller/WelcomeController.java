@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TestController {
+public class WelcomeController {
 
     @RequestMapping(value = "/test")
     public String index(ModelMap map) {

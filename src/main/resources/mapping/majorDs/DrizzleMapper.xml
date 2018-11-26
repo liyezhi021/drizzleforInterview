@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.majorDs.DrizzleMapper" >
+  <resultMap id="BaseResultMap" type="com.example.entity.Drizzle" >
+    <id column="iddrizzle" property="iddrizzle" jdbcType="INTEGER" />
+    <result column="drizzlecol" property="drizzlecol" jdbcType="VARCHAR" />
+    <result column="drizzlecol1" property="drizzlecol1" jdbcType="VARCHAR" />
+    <result column="drizzlecol2" property="drizzlecol2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    iddrizzle, drizzlecol, drizzlecol1, drizzlecol2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from drizzle
+    where iddrizzle = #{iddrizzle,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from drizzle
+    where iddrizzle = #{iddrizzle,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.Drizzle" >
+    insert into drizzle (iddrizzle, drizzlecol, drizzlecol1, 
+      drizzlecol2)
+    values (#{iddrizzle,jdbcType=INTEGER}, #{drizzlecol,jdbcType=VARCHAR}, #{drizzlecol1,jdbcType=VARCHAR}, 
+      #{drizzlecol2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.Drizzle" >
+    insert into drizzle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iddrizzle != null" >
+        iddrizzle,
+      </if>
+      <if test="drizzlecol != null" >
+        drizzlecol,
+      </if>
+      <if test="drizzlecol1 != null" >
+        drizzlecol1,
+      </if>
+      <if test="drizzlecol2 != null" >
+        drizzlecol2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iddrizzle != null" >
+        #{iddrizzle,jdbcType=INTEGER},
+      </if>
+      <if test="drizzlecol != null" >
+        #{drizzlecol,jdbcType=VARCHAR},
+      </if>
+      <if test="drizzlecol1 != null" >
+        #{drizzlecol1,jdbcType=VARCHAR},
+      </if>
+      <if test="drizzlecol2 != null" >
+        #{drizzlecol2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.Drizzle" >
+    update drizzle
+    <set >
+      <if test="drizzlecol != null" >
+        drizzlecol = #{drizzlecol,jdbcType=VARCHAR},
+      </if>
+      <if test="drizzlecol1 != null" >
+        drizzlecol1 = #{drizzlecol1,jdbcType=VARCHAR},
+      </if>
+      <if test="drizzlecol2 != null" >
+        drizzlecol2 = #{drizzlecol2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where iddrizzle = #{iddrizzle,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.Drizzle" >
+    update drizzle
+    set drizzlecol = #{drizzlecol,jdbcType=VARCHAR},
+      drizzlecol1 = #{drizzlecol1,jdbcType=VARCHAR},
+      drizzlecol2 = #{drizzlecol2,jdbcType=VARCHAR}
+    where iddrizzle = #{iddrizzle,jdbcType=INTEGER}
+  </update>
+</mapper>
