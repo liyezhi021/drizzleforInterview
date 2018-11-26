@@ -20,7 +20,7 @@ public class Init {
 
     private List<String> contentList = new ArrayList<>();
 
-    @PostConstruct
+    //@PostConstruct
     public void init() {
         Iterable<Post> posts = postRepository.findAll();
         initTitle();
