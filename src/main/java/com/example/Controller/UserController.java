@@ -18,17 +18,17 @@ public class UserController {
     private UserService userService;
 
     @ResponseBody
-    @RequestMapping(value = "/login",produces = {"application/json;charset=UTF-8"})
-    public ModelAndView user_login(HttpSession session,String username, String password){
+    @RequestMapping(value = "/login", produces = {"application/json;charset=UTF-8"})
+    public ModelAndView user_login(HttpSession session, String username, String password) {
         ModelAndView mv = new ModelAndView();
-        User user = userService.userlogin(username,password);
-        if(user!=null){
-            session.setAttribute("username",username);
-            session.setAttribute("password",password);
-            mv.addObject("message","success");
+        User user = userService.userlogin(username, password);
+        if (user != null) {
+            session.setAttribute("username", username);
+            session.setAttribute("password", password);
+            mv.addObject("message", "success");
             mv.setViewName("main");
-        }else{
-            mv.addObject("message","failure");
+        } else {
+            mv.addObject("message", "failure");
             mv.setViewName("login_failure");
         }
         return mv;

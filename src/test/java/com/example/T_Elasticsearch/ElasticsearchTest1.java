@@ -40,8 +40,8 @@ public class ElasticsearchTest1 {
     }
 
     @After
-    public void closeConnect(){
-        if(client != null){
+    public void closeConnect() {
+        if (client != null) {
             client.close();
         }
     }

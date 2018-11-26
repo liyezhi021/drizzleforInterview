@@ -13,7 +13,7 @@ public class RocketMQListener implements MessageListenerConcurrently {
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list,
                                                     ConsumeConcurrentlyContext consumeConcurrentlyContext) {
-        for(MessageExt message : list){
+        for (MessageExt message : list) {
             String msg = new String(message.getBody());
             System.out.println("msg data from rocketMQ:" + msg);
         }

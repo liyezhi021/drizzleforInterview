@@ -11,11 +11,11 @@ public class RedisUser implements Serializable {
     private String username;
     private Integer age;
 
-    public RedisUser(){
+    public RedisUser() {
 
     }
 
-    public RedisUser(String username,Integer age){
+    public RedisUser(String username, Integer age) {
         this.username = username;
         this.age = age;
     }

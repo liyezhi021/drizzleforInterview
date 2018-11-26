@@ -18,11 +18,11 @@ public class UserDaoTest {
 
 
     @Test
-    public void Testlogin(){
+    public void Testlogin() {
         String username = "payne";
         String password = "payne123";
-        User user = userMapper.loginUser(username,password);
-        System.out.println("user="+user);
+        User user = userMapper.loginUser(username, password);
+        System.out.println("user=" + user);
     }
 
 }

@@ -18,11 +18,11 @@ public class ApplicationTests {
     private MockMvc mvc;
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         mvc = MockMvcBuilders.standaloneSetup(new UserController()).build();
     }
 
-    public void testUserController() throws Exception{
+    public void testUserController() throws Exception {
         //测试UserController
         RequestBuilder request = null;
     }

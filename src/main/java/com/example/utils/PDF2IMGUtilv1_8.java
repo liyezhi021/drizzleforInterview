@@ -17,30 +17,30 @@ import java.util.List;
 
 public class PDF2IMGUtilv1_8 {
 
-    public static void PDFToImg(String fileUrl ) throws IOException {
+    public static void PDFToImg(String fileUrl) throws IOException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMDD");
         String format_today = formatter.format(new Date());
-        System.out.println("----------------->"+format_today);
+        System.out.println("----------------->" + format_today);
         File imageFile = new File("/home/payne/Documents/pdf2img/img");
         File imageFileParent = new File(imageFile.getParent());
         List<File> files = new ArrayList<>();
         OutputStream output = null;
         try {
-            if(!imageFileParent.exists())  imageFileParent.mkdirs();
+            if (!imageFileParent.exists()) imageFileParent.mkdirs();
 
             PDDocument pdDocument = getPDDocument(fileUrl);
             List pages = pdDocument.getDocumentCatalog().getAllPages();
-            for(int i = 0;i<pages.size(); i++){
-                PDPage page = (PDPage)pages.get(i);
+            for (int i = 0; i < pages.size(); i++) {
+                PDPage page = (PDPage) pages.get(i);
                 BufferedImage image = page.convertToImage();
                 Iterator iter = ImageIO.getImageWritersBySuffix("png");
-                ImageWriter writer = (ImageWriter)iter.next();
-                File tempFile = new File(imageFileParent.getPath(),i+imageFile.getName());
+                ImageWriter writer = (ImageWriter) iter.next();
+                File tempFile = new File(imageFileParent.getPath(), i + imageFile.getName());
                 files.add(tempFile);
                 output = new FileOutputStream(tempFile);
                 ImageOutputStream imageOut = ImageIO.createImageOutputStream(output);
                 writer.setOutput(imageOut);
-                writer.write(new IIOImage(image,null,null));
+                writer.write(new IIOImage(image, null, null));
                 output.close();
             }
             pdDocument.close();
