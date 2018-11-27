@@ -20,6 +20,7 @@ public class Init {
 
     private List<String> contentList = new ArrayList<>();
 
+    //启动es放开此注解，不然application启动报错
     //@PostConstruct
     public void init() {
         Iterable<Post> posts = postRepository.findAll();

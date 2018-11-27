@@ -5,7 +5,7 @@ import com.example.RocketMQ.RocketMQListener;
 
 public class RocketMQConsumerTest {
 
-    private static String nameServerAdd = "172.17.0.1:9876";
+    private static String nameServerAdd = "127.0.0.1:9876";
 
     private static String mqTopics = "MQ_MSG_TOPICS_TEST";
 

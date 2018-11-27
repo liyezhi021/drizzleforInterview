@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 //@EnableAutoConfiguration
 //@ComponentScan(basePackages = {"com.example"})
-@MapperScan("com.example.mapper")
+//@MapperScan("com.example.mapper")
 //@EnableScheduling
 @SpringBootApplication
 public class Application {

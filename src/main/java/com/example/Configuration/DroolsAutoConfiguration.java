@@ -1,4 +1,4 @@
-package com.example.Config;
+package com.example.Configuration;
 
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;

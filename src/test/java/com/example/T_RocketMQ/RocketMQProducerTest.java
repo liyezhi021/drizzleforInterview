@@ -5,7 +5,7 @@ import org.apache.rocketmq.common.message.Message;
 
 public class RocketMQProducerTest {
 
-    private static String mqNameServer = "172.17.0.1:9876";
+    private static String mqNameServer = "127.0.0.1:9876";
 
     private static String mqTopics = "MQ_MSG_TOPICS_TEST";
 
