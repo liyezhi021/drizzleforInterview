@@ -19,14 +19,14 @@ import javax.sql.DataSource;
         sqlSessionTemplateRef = "minorSqlSessionTemplate")
 public class MinorMybatisConfig {
 
-    @Bean(name = "minorDaraSource")
+    @Bean(name = "minorDataSource")
     @ConfigurationProperties(prefix = "second.datasource")
     public DataSource minorDataSource(){
         return DataSourceBuilder.create().build();
     }
 
     @Bean
-    public SqlSessionFactory minorSqlSessionFactory(@Qualifier("minorDaraSource") DataSource dataSource)
+    public SqlSessionFactory minorSqlSessionFactory(@Qualifier("minorDataSource") DataSource dataSource)
             throws Exception{
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);

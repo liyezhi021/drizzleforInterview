@@ -20,7 +20,7 @@ import javax.sql.DataSource;
         sqlSessionTemplateRef = "majorSqlSessionTemplate")
 public class MajorMybatisConfig {
 
-    @Bean(name = "majorDaraSource")
+    @Bean(name = "majorDataSource")
     @Primary
     @ConfigurationProperties(prefix = "first.datasource")
     public DataSource majorDataSource(){
@@ -28,7 +28,7 @@ public class MajorMybatisConfig {
     }
 
     @Bean
-    public SqlSessionFactory majorSqlSessionFactory(@Qualifier("majorDaraSource") DataSource dataSource)
+    public SqlSessionFactory majorSqlSessionFactory(@Qualifier("majorDataSource") DataSource dataSource)
             throws Exception{
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);

@@ -56,7 +56,8 @@ spring:
 #localhost
 first:
   datasource:
-    jdbc-url: jdbc:mysql://localhost:3306/drizzle
+    #jdbc-url: jdbc:mysql://localhost:3306/drizzle
+    jdbc-url: jdbc:mysql://localhost:3306/db_sh
     username: root
     password: root123
     driver-class-name: com.mysql.jdbc.Driver
@@ -78,7 +79,8 @@ first:
 #aliyun
 second:
   datasource:
-    jdbc-url: jdbc:mysql://101.132.41.179:3306/aliyun
+    #jdbc-url: jdbc:mysql://101.132.41.179:3306/aliyun
+    jdbc-url: jdbc:mysql://101.132.41.179:3306/db_sz
     username: root
     password: root1234
     driver-class-name: com.mysql.jdbc.Driver

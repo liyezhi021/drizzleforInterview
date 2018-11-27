@@ -5,6 +5,6 @@ public class TestCla {
     public static String privateUrl;
 
     static {
-        privateUrl = "eee";
+        privateUrl = "app start!";
     }
 }
