@@ -61,7 +61,6 @@ public class TableShardingAlgorithm implements MultipleKeysTableShardingAlgorith
 //          String timeString = ((LocalDate)value.get(1)).format(formatter);
             String timeString = new SimpleDateFormat("yyyy_MM").format(value.get(1));
             String suffix = (String)value.get(0) + "_" + timeString;
-            log.info("suffix:", suffix);
             for (String tableName : availableTargetNames) {
                 if (tableName.endsWith(suffix)) {
                     result.add(tableName);
