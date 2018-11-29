@@ -47,11 +47,10 @@ public final class DefaultKeyGenerator implements KeyGenerator {
 
     private long lastTime;
 
-    */
-/**
+*
      * 得到分布式唯一ID需要先设置workerId，workId的值范围[0, 1024)
      * @param workerId work process id
-     *//*
+
 
     public static void setWorkerId(final long workerId) {
         // google-guava提供的入参检查方法：workerId只能在0~WORKER_ID_MAX_VALUE之间；
@@ -59,11 +58,10 @@ public final class DefaultKeyGenerator implements KeyGenerator {
         DefaultKeyGenerator.workerId = workerId;
     }
 
-    */
-/**
+*
      * 调用该方法，得到分布式唯一ID
      * @return key type is @{@link Long}.
-     *//*
+
 
     @Override
     public synchronized Number generateKey() {
