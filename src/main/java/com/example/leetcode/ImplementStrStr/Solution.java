@@ -1,12 +1,8 @@
-package com.example.leetcode.example;
+package com.example.leetcode.ImplementStrStr;
 /**The describe:
- * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
- You may assume that each input would have exactly one solution, and you may not use the same element twice.
-
- Example:
- Given nums = [2, 7, 11, 15], target = 9,
- Because nums[0] + nums[1] = 2 + 7 = 9,
- return [0, 1].
+ * Implement strStr().
+ *
+ * Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
 
  #############################ACCEPTED!###############################
  **/
@@ -14,13 +10,29 @@ package com.example.leetcode.example;
 public class Solution {
 
 
-    public static int Example(int e){
-
-        return 0;
+    public static int strStr(String haystack, String needle) {
+        int hay_len = haystack.length();
+        int nee_len = needle.length();
+        if(nee_len==0) return 0;
+        for(int i=0; i< hay_len-nee_len+1; i++){
+            int j = i;
+            int k = 0;
+            while(true){
+                if(haystack.charAt(j) == needle.charAt(k)){
+                    k++; j++;
+                    if(k==nee_len){
+                        return i;
+                    }
+                }else break;
+            }
+        }
+        return -1;
     }
 
     public static void main(String[] args){
-
+        String haystack = "a";
+        String needle = "";
+        System.out.println(strStr(haystack, needle));
     }
 
 }
