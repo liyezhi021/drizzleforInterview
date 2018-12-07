@@ -1,7 +1,13 @@
 package com.example.leetcode.RemoveDuplicatesFromSortedArray;
+<<<<<<< HEAD
 
 import java.util.HashSet;
 import java.util.Set;
+=======
+/**The describe:
+ * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+ You may assume that each input would have exactly one solution, and you may not use the same element twice.
+>>>>>>> c296b16f82917e31b9cb494c394f92517e9e9a10
 
 /**The describe:
  * Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
