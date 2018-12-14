@@ -2,8 +2,10 @@ package com.example.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class Address {
+public class Address implements Serializable {
 
     private String postcode;
 

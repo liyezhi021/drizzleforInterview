@@ -37,17 +37,17 @@ public class DeepAndShallowClone implements Cloneable, Serializable {
     }
 
     //浅复制
-    public Object clone() throws CloneNotSupportedException{
+    public Object clone(Address add) throws CloneNotSupportedException{
         Prototype prototype = (Prototype) super.clone();
         return prototype;
     }
 
     //深复制
-    public Object deepClone() throws IOException, ClassNotFoundException{
+    public Object deepClone(Address add) throws IOException, ClassNotFoundException{
         //写入当前对象二进制流
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(bos);
-        oos.writeObject(this);
+        oos.writeObject(add);
 
         ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
         ObjectInputStream ois = new ObjectInputStream(bis);

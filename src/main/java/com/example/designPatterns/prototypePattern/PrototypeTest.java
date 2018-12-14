@@ -15,9 +15,11 @@ public class PrototypeTest {
         add.setState("2");
         add.setStress("3");
         try {
-            Address add1 = (Address) deepAndShallowClone.clone();
+            //Address add2 = add.clone();
+            Address add1 = (Address) deepAndShallowClone.deepClone(add);
             add1.setState("100");
             System.out.println("state--->"+ add.getState());
+            System.out.println("state1--->"+ add1.getState());
         } catch (Exception e) {
             e.printStackTrace();
         }
