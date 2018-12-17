@@ -9,7 +9,7 @@ public class DAO<T> {
 
     public DAO(){
         System.out.println("...->"+ this); //子类
-        Class class1 = this.getClass().getSuperclass(); //当前父类DAO
+        //Class class1 = this.getClass().getSuperclass(); //当前父类DAO
         Type type = this.getClass().getGenericSuperclass(); //获取带参数的子类
         //注意Type是一个空的接口，这里使用它的子类ParameterizedType，表示带参数的类类型（即泛型）
         if(type instanceof ParameterizedType){

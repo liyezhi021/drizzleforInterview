@@ -1,6 +1,6 @@
 package com.example.T_RocketMQ;
 
-import com.example.RocketMQ.RocketMQProducer;
+import com.example.rocketMQ.RocketMQProducer;
 import org.apache.rocketmq.common.message.Message;
 
 public class RocketMQProducerTest {
@@ -17,7 +17,7 @@ public class RocketMQProducerTest {
 
         for (int i = 0; i < 5; i++) {
             Message message = new Message();
-            message.setBody(("I send message to RocketMQ To Test" + i).getBytes());
+            message.setBody(("I send message to rocketMQ To Test" + i).getBytes());
             mqProducer.send(message);
         }
 

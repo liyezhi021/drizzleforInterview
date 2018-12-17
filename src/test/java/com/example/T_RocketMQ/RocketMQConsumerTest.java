@@ -1,7 +1,7 @@
 package com.example.T_RocketMQ;
 
-import com.example.RocketMQ.RocketMQConsumer;
-import com.example.RocketMQ.RocketMQListener;
+import com.example.rocketMQ.RocketMQConsumer;
+import com.example.rocketMQ.RocketMQListener;
 
 public class RocketMQConsumerTest {
 
