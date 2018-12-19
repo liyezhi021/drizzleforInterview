@@ -14,7 +14,9 @@ import java.util.concurrent.Future;
 @Configuration
 public class ThreadPoolTraceLog {
 
-    public static Integer CORE_POOL_SIZE = 10;
+    public static Integer CORE_POOL_SIZE = 2;
+
+    public static Integer MAX_POOL_SIZE = 5;
 
     @Bean("SpExecutor")
     public Executor getAsyncExecutor() {// 对线程池进行包装，使之支持traceId透传
@@ -31,6 +33,7 @@ public class ThreadPoolTraceLog {
             }
         };
         executor.setCorePoolSize(CORE_POOL_SIZE);
+        executor.setMaxPoolSize(MAX_POOL_SIZE);
         //... // 其他配置
         executor.initialize();
         return executor;
