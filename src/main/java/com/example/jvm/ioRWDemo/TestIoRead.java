@@ -1,4 +1,4 @@
-package com.example.jvm.ioDemo;
+package com.example.jvm.ioRWDemo;
 
 import java.io.*;
 
