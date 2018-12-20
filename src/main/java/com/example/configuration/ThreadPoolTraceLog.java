@@ -9,6 +9,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
 
 //多线程日志traceId 进行追踪
 @Configuration
