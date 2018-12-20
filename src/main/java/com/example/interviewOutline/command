@@ -1,0 +1,6 @@
+Idea 配置jConsole vm参数
+-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8011 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.net.preferIPv4Stack=true
+
+
+jvm分析工具 JPS Jstat Jinfo Jmap Jhat Jstack Jconsole visualVm
+https://mp.weixin.qq.com/s?__biz=MzUzMTA2NTU2Ng==&mid=2247485724&idx=2&sn=744f48ad7a9ccbfaf132ee899a5e1442&chksm=fa4976adcd3effbbb5dd610fecff50a9e16094de00c31470baee9a397b2e576a17a17adda92a&mpshare=1&scene=1&srcid=1204Oqvfsa8RocY4CBpXio9q#rd

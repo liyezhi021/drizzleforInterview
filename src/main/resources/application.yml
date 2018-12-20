@@ -59,7 +59,7 @@ first:
     #jdbc-url: jdbc:mysql://localhost:3306/drizzle
     jdbc-url: jdbc:mysql://localhost:3306/db_sh
     username: root
-    password: root123
+    password: root1234
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat

@@ -1,7 +1,5 @@
 package com.example.multiThreading.deadLock;
 
-import java.util.concurrent.locks.Lock;
-
 public class SimpleDeadLockDemo {
 
     public static void main(String[] args){
@@ -13,18 +11,19 @@ public class SimpleDeadLockDemo {
 
     static class LockDemo implements Runnable{
 
+        public static final Object A = new Object();
+        public static final Object B = new Object();
+
         boolean flag;
 
         LockDemo(boolean flag){
             this.flag = flag;
         }
 
-        public static final Object A = new Object();
-        public static final Object B = new Object();
-
 
         @Override
         public void run() {
+
             if(flag)
                 synchronized (A){
                     System.out.println("currentThread"+ Thread.currentThread().getName()+ " lock A");
