@@ -94,14 +94,14 @@ public class HelloMain {
      * 在这里，将这个CLASS文件重新加载到内存中，从而替换掉之前的CLASS文件
      * 即将之前那个类重新new一下
      */
-    private static void reloadFile(File newFile, MethodExecuteThread methodExcuteThread) {
+    private static void reloadFile(File newFile, MethodExecuteThread methodExecuteThread) {
         log.debug("[reloadFile]");
         HotClassLoader hotClassLoader = new HotClassLoader();
         hotClassLoader.setObjFile(newFile);
         try {
             Class<?> objClass = hotClassLoader.findClass("com.example.jvm.classLoader.Worker");
             //把这个新的CLASS设置到另一个线程中
-            methodExcuteThread.getExecuteClassLocal().set(objClass);//把新的class设置上
+            methodExecuteThread.getExecuteClassLocal().set(objClass);//把新的class设置上
             desClazz = objClass;
         } catch (Exception e) {
             e.printStackTrace();
