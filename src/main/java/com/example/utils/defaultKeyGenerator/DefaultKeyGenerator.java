@@ -1,5 +1,5 @@
 /*
-package com.example.defaultKeyGenerator;
+package com.example.utils.defaultKeyGenerator;
 
 import com.google.common.base.Preconditions;
 import io.shardingsphere.core.keygen.KeyGenerator;
