@@ -2,12 +2,17 @@ package com.example.jvm.nioRWDemo;
 
 import java.io.*;
 import java.nio.ByteBuffer;
+import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
+import java.nio.channels.WritableByteChannel;
 
 public class TestNioWR {
 
     private static Boolean APPENDABLE = true;
 
+    /**
+     *nio 一个字节一个字节的读取
+     * */
     public static void nioRead(String path){
         FileInputStream fis = null;
         try {
@@ -37,6 +42,43 @@ public class TestNioWR {
         }
     }
 
+    /**
+     *nio 一次性从缓冲区读多个
+     */
+    public static void nioReadMany(String path){
+        try {
+            InputStream is = new FileInputStream(path);
+            FileChannel fc = ((FileInputStream) is).getChannel();
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            WritableByteChannel wbc = Channels.newChannel(bos);
+            ByteBuffer buffer = ByteBuffer.allocate(1024);
+            while(true){
+                try {
+                    //数据读到缓冲区
+                    int i = fc.read(buffer);
+                    if(i==0 || i==-1) break;
+                    buffer.flip();
+                    wbc.write(buffer);
+                    buffer.clear();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println("nio read file --->"+ bos.toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * nio 写入
+     * */
     public static void nioWrite(String path){
         File file = new File(path);
         FileOutputStream outputStream = null;
@@ -65,12 +107,12 @@ public class TestNioWR {
     }
 
     public static void main(String[] args){
-        String path = "/home/payne/demo/hello.txt";
+        String path = "/home/drizzle/demo/haha.txt";
         TestNioWR.nioRead(path);
         System.out.println("--------------------------------");
         nioWrite(path);
         System.out.println("++++++++++++++++++++++++++++++++");
-        TestNioWR.nioRead(path);
+        TestNioWR.nioReadMany(path);
     }
 
 }
