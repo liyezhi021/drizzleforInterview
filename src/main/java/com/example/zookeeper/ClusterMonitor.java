@@ -5,6 +5,8 @@ import org.apache.zookeeper.*;
 import java.io.IOException;
 import java.util.List;
 
+import static com.example.constants.Constants.ZK_HOST_PORT;
+
 public class ClusterMonitor implements Runnable{
 
     private static String memberShipRoot = "/Members";
@@ -17,8 +19,9 @@ public class ClusterMonitor implements Runnable{
         connectionWatcher = new Watcher() {
             @Override
             public void process(WatchedEvent event) {
-                if (event.getType() == Watcher.Event.EventType.None && event.getState() == Watcher.Event.KeeperState.SyncConnected) {
-                    System.out.printf("\nEvent Received: %s", event.toString());
+                if (event.getType() == Watcher.Event.EventType.None &&
+                        event.getState() == Watcher.Event.KeeperState.SyncConnected) {
+                    System.out.printf("\nConnection Event Received: %s", event.toString());
                 }
             }
         };
@@ -26,7 +29,7 @@ public class ClusterMonitor implements Runnable{
         childrenWatcher = new Watcher() {
             @Override
             public void process(WatchedEvent event) {
-                System.out.printf("\nEvent Received: %s", event.toString());
+                System.out.printf("\nChildrenWatcher Event Received: %s", event.toString());
                 if (event.getType() == Event.EventType.NodeChildrenChanged) {
                     try {
                         //Get current list of child znode,
@@ -49,7 +52,8 @@ public class ClusterMonitor implements Runnable{
 
         // Ensure the parent znode exists
         if (zk.exists(memberShipRoot, false) == null) {
-            zk.create(memberShipRoot, "ClusterMonitorRoot".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+            zk.create(memberShipRoot, "ClusterMonitorRoot".getBytes(),
+                    ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         }
 
         // Set a watch on the parent znode
@@ -87,7 +91,6 @@ public class ClusterMonitor implements Runnable{
     }
 
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
-        String hostPort = "localhost:2181";
-        new ClusterMonitor(hostPort).run();
+        new ClusterMonitor(ZK_HOST_PORT).run();
     }
 }

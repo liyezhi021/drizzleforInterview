@@ -1,28 +1,25 @@
 package com.example.zookeeper;
 
-
-
 import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.constants.Constants.ZK_HOST_PORT;
 
 public class ZkDemo {
 
-    private static String HOST_POST = "localhost:2181";
-
     public static void main(String args[]) throws IOException {
 
-        List<String> zooChildren = new ArrayList<>();
-        ZooKeeper zk = new ZooKeeper(HOST_POST, 2000, null);
+        List<String> zooChildren;
+        ZooKeeper zk = new ZooKeeper(ZK_HOST_PORT, 2000, null);
 
         try {
             if(zk!= null){
-                String zpath = "/";
-                zooChildren = zk.getChildren(zpath, false);
-                System.out.println("Znodes of '/'");
-                zooChildren.forEach(t-> System.out.println(t));
+                String zPath = "/Members";
+                zooChildren = zk.getChildren(zPath, false);
+                System.out.println("zNodes of '/Members'");
+                zooChildren.forEach(System.out::println);
             }
         }catch (Exception e){
             e.printStackTrace();

@@ -4,6 +4,8 @@ import org.apache.zookeeper.*;
 
 import java.lang.management.ManagementFactory;
 
+import static com.example.constants.Constants.ZK_HOST_PORT;
+
 public class ClusterClient implements Watcher, Runnable {
 
     private static String membershipRoot = "/Members";
@@ -14,7 +16,8 @@ public class ClusterClient implements Watcher, Runnable {
         try {
             zk = new ZooKeeper(hostPort, 2000, this);
             if (zk != null) {
-                zk.create(membershipRoot + '/' + processId, processId.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
+                zk.create(membershipRoot + '/' + processId, processId.getBytes(),
+                        ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,11 +56,10 @@ public class ClusterClient implements Watcher, Runnable {
     }
 
     public static void main(String[] args) {
-        String hostPort = "localhost:2181";
         //Get the process id
         String name = ManagementFactory.getRuntimeMXBean().getName();
         int index = name.indexOf('@');
         Long processId = Long.parseLong(name.substring(0, index));
-        new ClusterClient(hostPort, processId).run();
+        new ClusterClient(ZK_HOST_PORT, processId).run();
     }
 }
