@@ -1,4 +1,4 @@
-package com.example.reflection;
+package com.example.java.reflection;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
