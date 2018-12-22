@@ -141,11 +141,12 @@
             <artifactId>protostuff-runtime</artifactId>
             <version>1.0.8</version>
         </dependency>
-        <!--mongodb-springboot依赖-->
-        <!--<dependency>
+        <!--mongodb-spring boot依赖-->
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>-->
+        </dependency>
+
         <!--java pdfBox-->
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
