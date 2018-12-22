@@ -16,9 +16,9 @@ public class ZkDemo {
 
         try {
             if(zk!= null){
-                String zPath = "/Members";
+                String zPath = "/";
                 zooChildren = zk.getChildren(zPath, false);
-                System.out.println("zNodes of '/Members'");
+                System.out.println("zNodes of '/'");
                 zooChildren.forEach(System.out::println);
             }
         }catch (Exception e){

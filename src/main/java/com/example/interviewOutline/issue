@@ -1,0 +1,2 @@
+tomcat 热部署要加下面配置  路径也可以配本地全路径
+    <Context docBase="demo-0.0.1-SNAPSHOT" path="/demo-0.0.1-SNAPSHOT" privileged="true" reloadable="true"/>
