@@ -59,7 +59,7 @@ first:
     #jdbc-url: jdbc:mysql://localhost:3306/drizzle
     jdbc-url: jdbc:mysql://localhost:3306/db_sh
     username: root
-    password: root1234
+    password: root123
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat
@@ -102,6 +102,36 @@ second:
 mybatis:
   mapper-locations: classpath:mapping/*/*.xml
   type-aliases-package: com.example.entity
+
+#kafka
+kafka:
+  consumer:
+    servers: localhost:9092
+    zookeeper:
+      connect: localhost:2181
+    enable:
+      auto:
+        commit: true
+    session:
+      timeout: 6000
+    auto:
+      commit:
+        interval: 100
+      offset:
+        reset: latest
+    topic: test
+    group:
+      id: test
+    concurrency: 10
+  producer:
+    servers: localhost:9092
+    retries: 0
+    linger: 1
+    batch:
+      size: 4096
+    buffer:
+      memory: 40960
+
 
 ##es地址
 
