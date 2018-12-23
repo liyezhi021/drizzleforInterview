@@ -8,8 +8,8 @@ public class TestBigInter {
 
     public static void main(String[] args){
         Random rd = new Random();
-        Collection
-        BigInteger bigInteger = BigInteger.probablePrime(1, 1000, rd);
+        /*Collection
+        BigInteger bigInteger = BigInteger.probablePrime(1, 1000, rd);*/
     }
 
 }
