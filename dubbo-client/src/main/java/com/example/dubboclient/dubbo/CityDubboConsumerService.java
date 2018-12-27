@@ -16,7 +16,7 @@ public class CityDubboConsumerService {
     CityDubboService cityDubboService;
 
     public void printCity() {
-        String cityName="温岭";
+        String cityName="wu wei";
         City city = cityDubboService.findCityByName(cityName);
         System.out.println(city.toString());
     }

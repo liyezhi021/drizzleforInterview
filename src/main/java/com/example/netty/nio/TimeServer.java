@@ -9,7 +9,7 @@ public class TimeServer {
                 port = Integer.valueOf(args[0]);
             }catch (NumberFormatException e){}
         }
-        //独立的线程，负责轮询多路复用器Selctor，可以处理多个客户端的并发接入
+        //独立的线程，负责轮询多路复用器Selector，可以处理多个客户端的并发接入
         MultiplexerTimeServer timeServer = new MultiplexerTimeServer(port);
         new Thread(timeServer, "NIO-MultiplexerTimeServer-001").start();
     }

@@ -29,10 +29,26 @@ public class BookFacade implements Cloneable, Serializable{
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(bos);
         oos.writeObject(bf);
+        oos.flush();
+        oos.close();
 
         ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
         ObjectInputStream ois = new ObjectInputStream(bis);
-        return ois.readObject();
+        Object o = ois.readObject();
+        ois.close();
+        return o;
+    }
+
+    @Override
+    public BookFacade clone(){
+        BookFacade bf = null;
+        try {
+            bf = (BookFacade) super.clone();
+            bf.bookMarks = bookMarks.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return bf;
     }
 
 
@@ -60,10 +76,21 @@ public class BookFacade implements Cloneable, Serializable{
         this.bookMarks = bookMarks;
     }
 
-    static class BookMarks implements Serializable{
+    static class BookMarks implements Cloneable, Serializable{
         private static final long serialVersionUID = 2L;
         private String tagName;
         private Integer pageNumber;
+
+        @Override
+        public BookMarks clone(){
+            BookMarks bf = null;
+            try {
+                bf = (BookMarks) super.clone();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+            return bf;
+        }
 
         public String getTagName() {
             return tagName;
