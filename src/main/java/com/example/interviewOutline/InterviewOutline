@@ -174,28 +174,22 @@
     1.Servlet的生命周期
     2.转发与重定向的区别
         转发：
-        客户首先发送一个请求到服务器端，服务器端发现匹配的servlet，并指定它去执行，当这个servlet
-        执行完之后，它要调用getRequestDispatcher()方法，把请求转发给指定的student_list.jsp,
-        整个流程都是在服务器端完成的，而且是在同一个请求里面完成的，因此servlet和jsp共享的是同一个
-        request，在servlet里面放的所有东西，在student_list中都能取出来，因此，student_list能
-        把结果getAttribute()出来，getAttribute()出来后执行完把结果返回给客户端。整个过程是一个请求，一个响应。
+        请求服务器内部流转，一个请求，setAttribute和 getAttribute来传递参数
         重定向：
-        客户发送一个请求到服务器，服务器匹配servlet，这都和请求转发一样，servlet处理完之后调用了sendRedirect()
-        这个方法，这个方法是response的方法，所以，当这个servlet处理完之后，看到response.senRedirect()方法，
-        立即向客户端返回这个响应，响应行告诉客户端你必须要再发送一个请求，去访问student_list.jsp，紧接着客户端受
-        到这个请求后，立刻发出一个新的请求，去请求student_list.jsp,这里两个请求互不干扰，相互独立，在前面request
-        里面setAttribute()的任何东西，在后面的request里面都获得不了。可见，在sendRedirect()里面是两个请求，两个响应
-    3.BeanFactory 和 ApplicationContext 有什么区别
-    4.Spring Bean 的生命周期
-    5.Spring IOC 如何实现
-    6.Spring中Bean的作用域，默认的是哪一个
-    7.说说 Spring AOP、Spring AOP 实现原理
-    8.动态代理(CGLib 与 JDK)、优缺点、性能对比、如何选择
-    9.Spring 事务实现方式、事务的传播机制、默认的事务类别
-    10.Spring 事务底层原理
-    11.Spring事务失效(事务嵌套)，JDK动态代理给Spring事务埋下的坑
-    12.如何自定义注解实现功能
-    13.Spring MVC 运行流程
+        两个请求，两个响应，互不影响，用getParameter方法
+    3.request.getParam 和 request.getAttribute方法
+        链接关系用getParameter，转发关系用set/getAttribute
+    4.BeanFactory 和 ApplicationContext 有什么区别
+    5.Spring Bean 的生命周期
+    6.Spring IOC 如何实现
+    7.Spring中Bean的作用域，默认的是哪一个
+    8.说说 Spring AOP、Spring AOP 实现原理
+    9.动态代理(CGLib 与 JDK)、优缺点、性能对比、如何选择
+    10.Spring 事务实现方式、事务的传播机制、默认的事务类别
+    11.Spring 事务底层原理
+    12.Spring事务失效(事务嵌套)，JDK动态代理给Spring事务埋下的坑
+    13.如何自定义注解实现功能
+    14.Spring MVC 运行流程
     Spring MVC 启动流程
     Spring 的单例实现原理
     Spring 框架中用到了哪些设计模式
