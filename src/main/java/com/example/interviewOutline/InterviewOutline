@@ -152,6 +152,11 @@
     缓存雪崩、缓存穿透、缓存预热、缓存更新、缓存降级
     使用缓存的合理性问题
     Redis常见的回收策略
+    redis主从是怎么选取的
+    redis插槽的分配
+    redis复制的过程
+    redis主节点宕机了怎么办，还有没有同步的数据怎么办
+    重入锁是怎么计数的
 
 2.3、消息队列
 
@@ -166,19 +171,31 @@
 
 3.1、SSM/Servlet
 
-    Servlet的生命周期
-    转发与重定向的区别
-    BeanFactory 和 ApplicationContext 有什么区别
-    Spring Bean 的生命周期
-    Spring IOC 如何实现
-    Spring中Bean的作用域，默认的是哪一个
-    说说 Spring AOP、Spring AOP 实现原理
-    动态代理(CGLib 与 JDK)、优缺点、性能对比、如何选择
-    Spring 事务实现方式、事务的传播机制、默认的事务类别
-    Spring 事务底层原理
-    Spring事务失效(事务嵌套)，JDK动态代理给Spring事务埋下的坑
-    如何自定义注解实现功能
-    Spring MVC 运行流程
+    1.Servlet的生命周期
+    2.转发与重定向的区别
+        转发：
+        客户首先发送一个请求到服务器端，服务器端发现匹配的servlet，并指定它去执行，当这个servlet
+        执行完之后，它要调用getRequestDispacther()方法，把请求转发给指定的student_list.jsp,
+        整个流程都是在服务器端完成的，而且是在同一个请求里面完成的，因此servlet和jsp共享的是同一个
+        request，在servlet里面放的所有东西，在student_list中都能取出来，因此，student_list能
+        把结果getAttribute()出来，getAttribute()出来后执行完把结果返回给客户端。整个过程是一个请求，一个响应。
+        重定向：
+        客户发送一个请求到服务器，服务器匹配servlet，这都和请求转发一样，servlet处理完之后调用了sendRedirect()
+        这个方法，这个方法是response的方法，所以，当这个servlet处理完之后，看到response.senRedirect()方法，
+        立即向客户端返回这个响应，响应行告诉客户端你必须要再发送一个请求，去访问student_list.jsp，紧接着客户端受
+        到这个请求后，立刻发出一个新的请求，去请求student_list.jsp,这里两个请求互不干扰，相互独立，在前面request
+        里面setAttribute()的任何东西，在后面的request里面都获得不了。可见，在sendRedirect()里面是两个请求，两个响应
+    3.BeanFactory 和 ApplicationContext 有什么区别
+    4.Spring Bean 的生命周期
+    5.Spring IOC 如何实现
+    6.Spring中Bean的作用域，默认的是哪一个
+    7.说说 Spring AOP、Spring AOP 实现原理
+    8.动态代理(CGLib 与 JDK)、优缺点、性能对比、如何选择
+    9.Spring 事务实现方式、事务的传播机制、默认的事务类别
+    10.Spring 事务底层原理
+    11.Spring事务失效(事务嵌套)，JDK动态代理给Spring事务埋下的坑
+    12.如何自定义注解实现功能
+    13.Spring MVC 运行流程
     Spring MVC 启动流程
     Spring 的单例实现原理
     Spring 框架中用到了哪些设计模式
@@ -208,12 +225,26 @@
 
 4.1、Nginx
 
-    请解释什么是C10K问题或者知道什么是C10K问题吗?
-    Nginx简介
-    正向代理和反向代理.
-    Nginx几种常见的负载均衡策略
-    Nginx服务器上的Master和Worker进程分别是什么
-    使用“反向代理服务器”的优点是什么?
+    1.请解释什么是C10K问题或者知道什么是C10K问题吗?
+        服务器无法并发处理10000以上的连接情况， epoll异步非阻塞处理等待kernel准备数据阶段的socket的并行数
+    2.Nginx简介
+        支持高并发的反向代理服务器，实现负载均衡
+    3.正向代理和反向代理.
+        正向代理代理客户端， 反向代理代理服务端
+    4.Nginx几种常见的负载均衡策略
+        1.默认轮询 2.加权轮询 3.fair根据服务器响应时间 4.ip_hash 5.url_hash
+    5.Nginx服务器上的Master和Worker进程分别是什么
+        master控制nginx服务器，fork出来的worker进程负责处理实际请求
+    6.使用“反向代理服务器”的优点是什么?
+        微服务分发拦截请求，负载均衡，增加机器负载
+    7.nginx 框架是怎样的
+        https://blog.csdn.net/guolong1983811/article/details/53501251
+        master+worker多进程模型，反向代理分发请求，底层epoll处理多个socket连接
+    8.nginx负载均衡的算法怎么实现的
+        轮询按时间分配请求，weight按权重，iphash按ip地址分配请求，能保证一个用户总是访问一台服务器解决了session共享问题，
+        fair根据服务器响应时间来分配请求，url_hash根据url计算哈希值定位到后台服务器
+    9.如何解决惊群现象？
+        nginx解决惊群问题是多个worker进程都去抢占进程锁，拿到锁的才进行处理
 
 4.2、分布式其他
 
