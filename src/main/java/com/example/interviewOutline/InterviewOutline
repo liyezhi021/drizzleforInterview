@@ -175,7 +175,7 @@
     2.转发与重定向的区别
         转发：
         客户首先发送一个请求到服务器端，服务器端发现匹配的servlet，并指定它去执行，当这个servlet
-        执行完之后，它要调用getRequestDispacther()方法，把请求转发给指定的student_list.jsp,
+        执行完之后，它要调用getRequestDispatcher()方法，把请求转发给指定的student_list.jsp,
         整个流程都是在服务器端完成的，而且是在同一个请求里面完成的，因此servlet和jsp共享的是同一个
         request，在servlet里面放的所有东西，在student_list中都能取出来，因此，student_list能
         把结果getAttribute()出来，getAttribute()出来后执行完把结果返回给客户端。整个过程是一个请求，一个响应。
