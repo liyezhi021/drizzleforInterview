@@ -2,10 +2,6 @@ webSocket
 mongoDB
 jpa
 restTemplate
-localDataTime
-lazy load
 
 //TODO
 八大排序
-拦截器和过滤器
-tomcat+servlet+springMVC
