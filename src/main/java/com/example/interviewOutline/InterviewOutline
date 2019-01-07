@@ -1,28 +1,72 @@
 一、基础篇
 1.1 java基础
-    面向对象的特征:继承、封装和多态
-    final, finally, finalize 的区别
-    Exception、Error、运行时异常与一般异常有何异同
-    请写出5种常见到的runtime exception
-    int 和 Integer 有什么区别，Integer的值缓存范围
-    包装类，装箱和拆箱
-    String、StringBuilder、StringBuffer
-    重载和重写的区别
-    抽象类和接口有什么区别
-    Java中的泛型方法
-    说说反射的用途及实现
-    说说自定义注解的场景及实现
-    HTTP请求的GET与POST方式的区别
-    Session与Cookie区别
-    列出自己常用的JDK包
-    MVC设计思想
-    equals与==的区别
-    hashCode和equals方法的区别与联系
-    什么是Java序列化和反序列化，如何实现Java序列化?或者请解释Serializable 接口的作用
-    Object类中常见的方法，为什么wait notify会放在Object里边?
-    Java的平台无关性如何体现出来的
-    JDK和JRE的区别
-    Java 8有哪些新特性
+    1.面向对象的特征:继承、封装和多态
+        继承可以拓展和复用父类的属性和方法，和重写配合使用实现java的多态，
+        封装隐藏内部实现细节，对外提供api,做到模块之间的解耦
+        多态：父类对象指向子类对象引用，子类对象重写父类方法
+    2.final, finally, finalize 的区别
+        final修饰类，方法，属性表示类不可被继承，方法不可被重写，属性不能改变
+        finally 通常在try/catch 结尾结尾，做一些流资源/socket连接的关闭，释放资源
+        finalize 跟gc相关，如果对象在finalize块中被引用，可能会延迟这个对象的回收
+    3.Exception、Error、运行时异常与一般异常有何异同
+        异常是程序允许的，允许程序做一些补救措施，分为运行时异常和非运行时异常，error是错误，
+        程序无法处理，比如虚拟机异常oom，stackOverFlow这些，
+        不同点：非运行时异常编译阶段会直接报错的，比如io读文件错误，sqlException,用户自定义异常，
+        运行时异常就是一般的空指针，数组越界，classCastException，VerifyException
+    4.请写出5种常见到的runtime exception
+        nullPointException. IndexOutOfBoundException, ClassCastException,
+        IllegalArgumentException, ArithmeticException,ArrayStoreException,
+        NumberFormatException
+    5.int 和 Integer 有什么区别，Integer的值缓存范围
+        包装类型的基本类型，-128～127
+    6.包装类，装箱和拆箱
+        byte, short, int, long   Byte,  Short, Integer, Long
+        boolean, char, float, double  Boolean, Character. Float, Double
+        Number类是一个抽象类，返回基本类型
+    7.String、StringBuilder、StringBuffer
+        String是final类型的，StringBuild是线程不安全，非final的 Buffer是线程安全非final类目前似乎被废弃了
+    8.重载和重写的区别
+        重载跟原来的方法方法名相同，参数和参数类型可以不同， 重写跟原来的方法名参数和参数类型都是一致的，一般子类重写父类的方法
+    9.抽象类和接口有什么区别
+        抽象类可以有自己的实现，除了不能实例化，抽象类和普通的类没区别的，一个不是抽象类的类继承一个抽象类，要实现他的所有抽象方法
+        当然抽象类也可以继承抽象类， 一个类可以实现一个接口，需要实现这个接口的所有方法，  还有一点就是接口和类的区别了，
+        可以实现多个接口， 但是只能继承一个类
+    10.Java中的泛型方法
+        泛型提供擦除机制，编译的字节码是没有泛型的，List<>来说  限定了类型，比以前不带类型形参的方式更安全
+    11.说说反射的用途及实现
+        各种ide，框架会比较多的用到反射，动态代理，比如spring的xml配置，先用forName,或者ClassLoader获取这个类，判断是否
+        是我们需要的类，实例化，通过需要执行方法的invoke方法传入参数来执行方法，或者直接拿到他的属性
+    12.说说自定义注解的场景及实现
+        jpa中类属性跟表字段自动对应赋值， @Notnull验证功能，javadoc
+        有4个元注解， @interface就可以生成注解 注解可以有自己的字段
+    13.HTTP请求的GET与POST方式的区别
+        get请求参数接在url后面，安全性不高，有最大长度限制，  post请求安全性高， 参数通过requestBody传递到后台，没有最大长度限制
+    14.Session与Cookie区别
+        session是服务端保存的客户端状态 一般重要的信息比如登录密码保存在session中，当访问增多时，会影响服务器性能
+        cookie是客户端保存的服务端状态，有最大长度限制，3k，不可靠，保存在本地，时间比较长，3个月不用重新登录就是cookie的一个应用
+    15.列出自己常用的JDK包
+        java.lang java.math java.sql java.io java.util java.nio
+    16.MVC设计思想
+        model,view,controller, model负责封装业务逻辑， view负责展现视图，提供用户的操作界面
+        controller负责帮view发过来的请求找到相应的model处理
+    17.equals与==的区别
+        equal不需要比较对象地址，对象内容相同就返回true， ==还需要比较对象内存地址，指针指向同一块区域才算相等
+    18.hashCode和equals方法的区别与联系
+        hashCode不可靠，不同的对象也可能会生成同样的hash码。 equals的比较方法更可靠一点，在集合或者hashMap中比较的时候会
+        先比较hashCode，如果hashcode相等在比较equals
+        重写equals方法，要重写hashCode方法,
+    19.什么是Java序列化和反序列化，如何实现Java序列化?或者请解释Serializable 接口的作用
+        将一个对象序列化，使其变成二进制字节流形式，便于在网络上传输和存储到磁盘，反序列化是让其从二进制字节流形式变为对象形式，
+        实现Serializable
+    20.Object类中常见的方法，为什么wait notify会放在Object里边?
+        toString(), equals, hashCode, wait, notify
+        唤醒，等待必须是同一把锁，因为锁的定义可以是任何一个对象， 所以 wait, notify就放在对象里面了
+    21.Java的平台无关性如何体现出来的
+        jvm
+    22.JDK和JRE的区别
+        jdk饱含java开发工具包和jre，jre只是java运行环境
+    23.Java 8有哪些新特性
+        增加lambda函数式编程,接口默认方法和静态方法，容器功能增强，流式编程， localDateTime, 重复注解
 
 1.2、Java常见集合
     List 和 Set 区别

@@ -2,8 +2,10 @@ package com.example.constants;
 
 public class Constants {
 
-    public static String LOG_TRACE_ID = "TraceId";
+    private Constants(){}
 
-    public static String ZK_HOST_PORT = "localhost:2181";
+    public static final String LOG_TRACE_ID = "TraceId";
+
+    public static final String ZK_HOST_PORT = "localhost:2181";
 
 }
