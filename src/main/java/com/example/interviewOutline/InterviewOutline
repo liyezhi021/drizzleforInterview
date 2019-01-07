@@ -209,19 +209,33 @@
 2.2、Redis
 
     Redis 有哪些数据类型
+        string, list, set, sorted set, hash
     Redis 内部结构
+        Redis 内置了复制（Replication），LUA脚本（Lua scripting）， LRU驱动事件（LRU eviction），
+        事务（Transactions） 和不同级别的磁盘持久化（Persistence），并通过 Redis哨兵（Sentinel）和自动分区（Cluster）
+        提供高可用性（High Availability）
     Redis 使用场景
+        高速缓存，分布式锁.
     Redis 持久化机制
+        RDB和AOF
     Redis 集群方案与实现
+        主从，master挂掉，选举新的slave为master， 原先master正常后以slave身份重新加入
     Redis 为什么是单线程的?
+        基于内存的，查找效率很高，所以不需要多线程，单线程的优势在于避免线程的上下文切换，也不用考虑各种锁的加锁与释放以及死锁问题。
     缓存雪崩、缓存穿透、缓存预热、缓存更新、缓存降级
     使用缓存的合理性问题
     Redis常见的回收策略
+        LRU,最近最少使用的建先进行清理
     redis主从是怎么选取的
+        选举机制
     redis插槽的分配
+        每一个key通过hash映射成一个槽位，set值的时候通过槽位拿到所有节点，进行赋值操作
     redis复制的过程
+        slaveOf, master拷贝rdb到slave
     redis主节点宕机了怎么办，还有没有同步的数据怎么办
+        slave会升级到master, 通过aof恢复
     重入锁是怎么计数的
+        同一个线程多次获得锁，计数器+1 释放锁-1， 就是说多一个线程不会多次竞争同一把分布式锁.
 
 2.3、消息队列
 
