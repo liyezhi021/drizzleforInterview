@@ -172,30 +172,49 @@
 3.1、SSM/Servlet
 
     1.Servlet的生命周期
+        加载，实例化先调用init方法初始化，有请求进来调用service()方法，最后容器关闭或者该servlet不可用调用他的destroy方法
+        整个生命周期内只初始化一次
     2.转发与重定向的区别
         转发：
         请求服务器内部流转，一个请求，setAttribute和 getAttribute来传递参数
         重定向：
-        两个请求，两个响应，互不影响，用getParameter方法
+        两个请求，两个响应，互不影响，用getParameter方法传递参数
     3.request.getParam 和 request.getAttribute方法
         链接关系用getParameter，转发关系用set/getAttribute
     4.BeanFactory 和 ApplicationContext 有什么区别
+        beanFactory是spring最底层的接口，只提供了实例化和获取bean的功能
+        applicationContext 由 beanFactory接口派生来的，更面向框架化，提供了很多功能，从xml,file去拿bean之类的，还会一次性
+        加载创建所有bean，在容器启动的时候能及时排查到bean的配置错误 也可以手动设置Bean的懒加载
     5.Spring Bean 的生命周期
+        容器启动，由BeanFactory 或者 applicationContext初始化和实例化，最后destroy 销毁
     6.Spring IOC 如何实现
+        BeanFactory/ApplicationContext是IOC的两种实现,
+        先实例化IOC容器, getBean获取实例，通过BeanDefinition在IOC容器注册
     7.Spring中Bean的作用域，默认的是哪一个
+        默认是singleton, 其他还有prototype, session, request
     8.说说 Spring AOP、Spring AOP 实现原理
+        核心是动态代理加反射
     9.动态代理(CGLib 与 JDK)、优缺点、性能对比、如何选择
+        jdk代理接口的实现类，基于接口的， cglib是生成代理类的子类，代理类不能为final类型的，cglib proxy创建慢运行快
+        ，jdk proxy刚好相反选择方面，如果类有顶层接口，选择jdk，如果直接是一个类使用cglib
     10.Spring 事务实现方式、事务的传播机制、默认的事务类别
+        编程式事务，显示调用commit, rollback等命令， 用的比较多的声明式事务，注解形式，或者用aop方式声明事务
+        事务传播机制，常用的就是require,当前没有事务，创建一个事务，当前已经存在事务，加入事务， 默认事务类别应该指的
+        就是这个require吧
     11.Spring 事务底层原理
+        通过aop实现切面逻辑织入的，能保证任何一个事务任何一个方法失败调用db rollback回滚事务
     12.Spring事务失效(事务嵌套)，JDK动态代理给Spring事务埋下的坑
+        两个带有@Trasaction注解的方法，如果A直接调用B 相当与调用普通B的方法，除非开启proxy
+        SpringBoot配置方式：注解开启 exposeProxy = true 否则((xxxService)AopContext.currentProxy())
+        .methodB()暴露代理对象;
     13.如何自定义注解实现功能
     14.Spring MVC 运行流程
-    Spring MVC 启动流程
-    Spring 的单例实现原理
-    Spring 框架中用到了哪些设计模式
-    Spring 其他产品(Srping Boot、Spring Cloud、Spring Secuirity、Spring Data、Spring AMQP 等)
-    有没有用到Spring Boot，Spring Boot的认识、原理
-    MyBatis的原理
+    15.Spring MVC 启动流程
+    16.Spring 的单例实现原理
+    17.Spring 框架中用到了哪些设计模式
+    18.Spring 其他产品(Spring Boot、Spring Cloud、Spring Security、Spring Data、Spring AMQP 等)
+    19.有没有用到Spring Boot，Spring Boot的认识、原理
+    20.MyBatis的原理
 
 3.2、Netty
 
@@ -268,9 +287,9 @@
     Spring Could的常见组件有哪些?
     领域驱动有了解吗?什么是领域驱动模型?充血模型、贫血模型
     JWT有了解吗，什么是JWT
-    你怎么理解 RESTful
+    你怎么理解 restful
     说说如何设计一个良好的 API
-    如何理解 RESTful API 的幂等性
+    如何理解 restful API 的幂等性
     如何保证接口的幂等性
     说说 CAP 定理、BASE 理论
     怎么考虑数据一致性问题

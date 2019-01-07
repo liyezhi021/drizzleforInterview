@@ -22,6 +22,7 @@ public class BookFacadeCglib implements MethodInterceptor {
     }
 
     // 实现回调方法
+    @Override
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
         System.out.println("预处理...");
         proxy.invokeSuper(obj, args); //调用业务类（父类中）的方法

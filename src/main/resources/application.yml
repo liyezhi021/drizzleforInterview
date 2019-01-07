@@ -24,14 +24,15 @@ spring:
         #poolPreparedStatements: true
         #maxOpenPreparedStatements: 20
     thymeleaf:
-      cache: true
+      cache: false
       check-template-location: true
-      #content-type: text/html
+      servlet:
+        content-type: text/html
       enabled: true
-      encoding: utf-8
+      encoding: UTF-8
       excluded-view-names:
       mode: HTML5
-      prefix: classpath:/templates/
+      prefix: classpath:/static/templates/
       suffix: .html
       template-resolver-order:
       view-names:
@@ -59,7 +60,7 @@ first:
     #jdbc-url: jdbc:mysql://localhost:3306/drizzle
     jdbc-url: jdbc:mysql://localhost:3306/db_sh
     username: root
-    password: root123
+    password: root1234
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat

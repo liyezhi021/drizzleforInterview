@@ -1,4 +1,4 @@
-package com.example.aop;
+package com.example.aopIntercepterFilter;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -15,7 +15,7 @@ public class NormalAopConf {
      *             上面的第一个..表示service包及其子包,第二个*表示所有类,第三个*表示所有方法，
      *             第二个..表示方法的任意参数个数
      * */
-    @Pointcut("execution(* com.example.aop.TestAopMethod.*(..))")
+    @Pointcut("execution(* com.example.aopIntercepterFilter.TestAopMethod.*(..))")
     public void pointCut(){}
 
     @Before("pointCut()")
