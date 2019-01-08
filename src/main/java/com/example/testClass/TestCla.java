@@ -1,5 +1,10 @@
 package com.example.testClass;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TestCla {
@@ -10,6 +15,7 @@ public class TestCla {
 
     public static void main(String[] args) {
         //System.out.println(2 << 3);
+        BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(10);
         System.out.println(test());
 
     }
