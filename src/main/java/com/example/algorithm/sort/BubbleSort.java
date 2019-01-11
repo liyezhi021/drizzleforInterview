@@ -1,6 +1,6 @@
 package com.example.algorithm.sort;
 
-public class Bubble {
+public class BubbleSort {
 
     public void BubbleSort(int[] list){
         boolean flag = true;
@@ -22,7 +22,7 @@ public class Bubble {
         int[] array = {
                 1,3,4,5,2,17,9,7,8,0,10,6
         };
-        Bubble bubble = new Bubble();
+        BubbleSort bubble = new BubbleSort();
         bubble.BubbleSort(array);
         for(int i=0; i<array.length; i++){
             System.out.print(array[i]+" ");
