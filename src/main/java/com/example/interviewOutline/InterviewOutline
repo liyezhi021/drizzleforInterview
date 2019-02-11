@@ -26,7 +26,7 @@
         boolean, char, float, double  Boolean, Character. Float, Double
         Number类是一个抽象类，返回基本类型
     7.String、StringBuilder、StringBuffer
-        String是final类型的，StringBuild是线程不安全，非final的 Buffer是线程安全非final类目前似乎被废弃了
+        String是final类型的，StringBuilder线程不安全，StringBuffer线程安全目前似乎被废弃了
     8.重载和重写的区别
         重载跟原来的方法方法名相同，参数和参数类型可以不同， 重写跟原来的方法名参数和参数类型都是一致的，一般子类重写父类的方法
     9.抽象类和接口有什么区别
@@ -34,10 +34,12 @@
         当然抽象类也可以继承抽象类， 一个类每实现一个接口，需要实现这个接口的所有方法，  还有一点就是接口和类的区别了，
         可以实现多个接口， 但是只能继承一个类
     10.Java中的泛型方法
+        *Java中没有泛型数组
         泛型提供擦除机制，编译的字节码是没有泛型的，List<>来说  限定了类型，比以前不带类型形参的方式更安全
     11.说说反射的用途及实现
-        各种ide，框架会比较多的用到反射，动态代理，比如spring的xml配置，先用forName,或者ClassLoader获取这个类，判断是否
-        是我们需要的类，实例化，通过需要执行方法的invoke方法传入参数来执行方法，或者直接拿到他的属性
+        各种ide，框架会比较多的用到反射(代码提示等)，动态代理，比如spring的xml配置，先用forName,或者ClassLoader获取这个类，判断是否
+        是我们需要的类，加载，linking(验证,解析,初始化),初始化,使用,卸载.newInstance()实例化，通过需要执行方法的invoke方法传入参数来执行方法，
+        或者直接拿到他的属性
     12.说说自定义注解的场景及实现
         jpa中类属性跟表字段自动对应赋值， @Notnull验证功能，javadoc
         有4个元注解， @interface就可以生成注解 注解可以有自己的字段

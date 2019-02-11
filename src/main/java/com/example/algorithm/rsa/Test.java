@@ -13,7 +13,7 @@ public class Test {
         System.out.println("公钥: \n\r" + publicKey);
         System.out.println("私钥： \n\r" + privateKey);
         System.out.println("公钥加密——私钥解密");
-        String str = "我十分欣赏你这个狗叼";
+        String str = "懂了吗 弟弟";
         System.out.println("\r明文：\r\n" + str);
         //System.out.println("\r明文大小：\r\n" + str.getBytes().length);
         String encodedData = null;

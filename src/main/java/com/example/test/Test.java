@@ -11,6 +11,9 @@ public class Test {
         list.add("ww");
         list.add(100);
 
+        StringBuilder sb = new StringBuilder();
+        StringBuffer sf = new StringBuffer();
+
         for(int i=0; i<list.size(); i++){
             String name = (String) list.get(i);
             System.out.println(name);
