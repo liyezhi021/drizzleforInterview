@@ -41,8 +41,7 @@
         是我们需要的类，加载，linking(验证,解析,初始化),初始化,使用,卸载.newInstance()实例化，通过需要执行方法的invoke方法传入参数来执行方法，
         或者直接拿到他的属性
     12.说说自定义注解的场景及实现
-        jpa中类属性跟表字段自动对应赋值， @Notnull验证功能，javadoc
-        有4个元注解， @interface就可以生成注解 注解可以有自己的字段
+        jpa中类属性跟表字段自动对应赋值， @Notnull验证功能, @Documented 能被javadoc识别
     13.HTTP请求的GET与POST方式的区别
         get请求参数接在url后面，安全性不高，有最大长度限制，  post请求安全性高， 参数通过requestBody传递到后台，没有最大长度限制
     14.Session与Cookie区别
